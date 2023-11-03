@@ -1,6 +1,7 @@
 package com.example.demo;
 
 
+import com.example.demo.handlers.StatusHandler;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,7 +15,8 @@ import java.io.PrintWriter;
 public class SaveServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
@@ -33,11 +35,14 @@ public class SaveServlet extends HttpServlet {
         int status = EmployeeRepository.save(employee);
         //out.println(status);
 
-        if (status > 0) {
-            out.print("Record saved successfully!");
-        } else {
-            out.println("Sorry! unable to save record");
-        }
+
+//        if (status > 0) {
+//            out.print("Record saved successfully!");
+//        } else {
+//            out.println("Sorry! unable to save record");
+//        }
+        StatusHandler.handleSaveStatus(status, out); //возможно всё не так )))
+
         out.close();
     }
 }

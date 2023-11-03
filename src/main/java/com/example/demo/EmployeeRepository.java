@@ -8,11 +8,11 @@ import java.util.Optional;
 
 public final class EmployeeRepository {
 
-    /*public static void main(String[] args) {
-        getConnection();
-        Employee employee = new Employee("Takeshi", "takeshi.jp@jmail.jp", "Japan");
-        save(employee);
-    }*/
+//    public static void main(String[] args) {
+//        getConnection();
+//        Employee employee = new Employee("Takeshi", "takeshi.jp@jmail.jp", "Japan");
+//        save(employee);
+//    }
 
     public static Connection getConnection() {
 
