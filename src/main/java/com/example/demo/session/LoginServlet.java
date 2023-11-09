@@ -1,5 +1,6 @@
 package com.example.demo.session;
 
+import com.example.demo.cache.Cache;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -21,10 +22,12 @@ public class LoginServlet extends HttpServlet {
         String user = request.getParameter("user");
         String pwd = request.getParameter("pwd");
         // Это значение наших параметров
-        String userID = "admin";
-        String password = "password";
 
-        if (userID.equals(user) && password.equals(pwd)) {
+//        String userID = "admin";
+//        String password = "password";
+//        if (userID.equals(user) && password.equals(pwd)) { // Это нам больще не надо
+
+        if (Cache.authorize(user, pwd)) {
             HttpSession session = request.getSession();
             session.setAttribute("user", "user");
             //setting session to expiry in 30 mins
